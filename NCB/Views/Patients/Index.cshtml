@@ -1,0 +1,74 @@
+﻿@model IEnumerable<HMS.Models.Patient>
+
+@{
+    ViewData["Title"] = "All Patients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">All Patients</h1>
+<hr />
+
+<p class="text-right">
+    <a asp-action="SearchPatient" class="btn btn-primary">Search</a>
+    <a asp-action="Create" class="btn btn-info">Add Patient</a>
+</p>
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastVisit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelephoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastVisit)
+            </td>
+            <td class="btn-group">
+                <a asp-action="Edit" asp-route-id="@item.PatientID" class="btn btn-primary btn-sm">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.PatientID" class="btn btn-info btn-sm">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.PatientID" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,64 @@
+﻿@model DisplayPatientViewModel
+
+@{
+    ViewData["Title"] = "Patient Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var photoPath = "~/images/patients/" + (Model.PhotoPath ?? "noimage.png");
+}
+
+<h1 class="text-center">Patient Information</h1>
+<hr />
+
+<h2 class="text-center">@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+    <p class="text-right">
+        <a asp-action="Edit" asp-route-id="@Model.PatientID" class="btn btn-primary">Edit</a>
+    </p>
+
+<div class="row">
+    <div class="col-md-8 row">
+        <div class="col-md-5">
+            <img class="img-fluid" src="@photoPath" asp-append-version="true" />
+        </div>
+        <div class="col-md-7 row">
+            <div class="col-sm-6">
+                <h5>@Html.DisplayNameFor(model => model.PatientID)</h5> <br />
+                <h5>@Html.DisplayNameFor(model => model.Gender)</h5> <br />
+                <h5>@Html.DisplayNameFor(model => model.DateofBirth)</h5>
+            </div>
+            <div class="col-sm-6">
+                 <h5>@Html.DisplayFor(model => model.PatientID)</h5> <br />
+                 <h5>@Html.DisplayFor(model => model.Gender)</h5> <br />
+                 <h5>@Html.DisplayFor(model => model.DateofBirth)</h5>
+            </div>
+        </div>
+        <div class="container-fluid" style="height:200px; overflow-y:auto;">
+            <table class="table table-hover table-bordered table-sm">
+                <caption style="caption-side:top" class="text-right h5">Visitation History</caption>
+                <thead class="thead-dark">
+                    <tr class="no-gutters">
+                        <th scope="col" class="d-inline-block col-3 text-center">Date</th>
+                        <th scope="col" class="d-inline-block col-9 text-center">Reason for visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.Visits)
+                    {
+                        <tr>
+                            <td class="d-inline-block col-3 text-center">@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td class="d-inline-block col-9 text-center">@Html.DisplayFor(modelItem => item.Description)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="col-md-4">
+        <p class="text-right h5">Known Allergies</p>
+        <div class="form-group">
+            <form>
+                <textarea asp-for="Allergies" class="form-control" readonly rows="20"> </textarea>
+            </form>
+        </div>
+    </div>
+</div>

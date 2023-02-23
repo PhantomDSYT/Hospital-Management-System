@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <!-- TOP HALF -->
+    <div class="col-md-6 text-center mt-5">
+        <a asp-action="Index" asp-controller="Patients">
+            <img src="~/images/Icons/003-magnifier.png" style="height:300px" />
+            <h4 class="pt-4">Patient Search</h4>
+        </a>
+    </div>
+    <div class="col-md-6 text-center mt-5">
+        <a asp-action="Create" asp-controller="Patients" class="text-center">
+            <img src="~/images/Icons/004-registration.png" style="height:300px"  />
+            <h4 class="pt-4">Patient Registration</h4>
+        </a>
+    </div>
+
+    <!-- BOTTOM HALF -->
+    <div class="col-md-6 text-center mt-5">
+        <a asp-action="Index" asp-controller="Appointment">
+            <img src="~/images/Icons/002-calendar.png" style="height:300px"  />
+            <h4 class="pt-4">Appointments</h4>
+        </a>
+    </div>
+    <div class="col-md-6 text-center mt-5">
+        <a asp-action="Index" asp-controller="Medicines">
+            <img src="~/images/Icons/001-inventory.png" style="height:300px"  />
+            <h4 class="pt-4">Inventory</h4>
+        </a>
+    </div>
+</div>

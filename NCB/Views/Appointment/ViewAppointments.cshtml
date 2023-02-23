@@ -1,0 +1,61 @@
+﻿@model IEnumerable<HMS.Models.Appointment>
+
+@{
+    ViewData["Title"] = "View Appointments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">View Appointments</h1>
+<hr />
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientName) #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientName)#@Html.DisplayFor(modelItem => item.PatientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.AppointmentID" class="btn btn-primary btn-sm">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

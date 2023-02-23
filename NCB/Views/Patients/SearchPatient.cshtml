@@ -1,0 +1,32 @@
+﻿@model PatientSearchViewModel
+@{
+    ViewData["Title"] = "Patient Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="text-center">Patient Search</h1>
+<hr />
+<form method="post" class="mt-3">
+    <div class="form-group  row">
+        <label asp-for="FirstName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="FirstName" class="form-control text-center"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="LastName" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="LastName" class="form-control text-center"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label asp-for="DateofBirth" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input asp-for="DateofBirth" type="date" class="form-control text-center" rows="3"/>
+        </div>
+    </div>
+    <div class="form-group text-right">
+        <input type="submit" class="btn btn-primary btn-lg" value="Search" />
+    </div>
+</form>
